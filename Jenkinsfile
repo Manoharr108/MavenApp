@@ -5,17 +5,21 @@ pipeline{
 	}
 	stages{
 		stage('checkout'){
+		steps{
 			git branch : 'master', url :'https://github.com/Manoharr108/MavenApp'
-		}
+		}}
 		stage('build'){
+		steps{
 			sh 'mvn clean package'
-		}
+		}}
 		stage('test'){
-		sh 'mvn test'
+		steps{
+		sh 'mvn test'}
 		}
 		stage('Run Application'){
+		steps{
 		sh 'java -cp target/HelloMaven-1.0-SNAPSHOT.jar com.example.App '
-		}
+		}}
 		
 	}
 }
